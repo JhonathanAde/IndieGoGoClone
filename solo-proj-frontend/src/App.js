@@ -8,6 +8,7 @@ import HomePage from "./Pages/HomePage";
 import StartACampaign from "./Pages/StartACampaign";
 import LoginFormPage from "./components/LoginFormPage";
 import ProfilePage from "./Pages/ProfilePage";
+import MyCampaign from "./Pages/MyCampaigns";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route exact path="/start-a-campaign">
             <StartACampaign />
+          </Route>
+          <Route exact path={`/${user.username}/my-campaigns`}>
+            <MyCampaign />
           </Route>
           <Route exact path={`/${user.username}`}>
             <ProfilePage />
