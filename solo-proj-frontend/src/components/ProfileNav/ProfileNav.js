@@ -3,13 +3,17 @@ import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 const ProfileNav = () => {
-  const user = useSelector((state) => state.session.user);
+  const sessionUser = useSelector((state) => state.session.user);
 
   return (
     <>
-      <NavLink to={`/${user.username}`}>Profile</NavLink>
-      <NavLink to={`/${user.username}/my-campaigns`}>My Campaigns</NavLink>
-      <NavLink to={`/${user.username}/contributions`}>Contributions</NavLink>
+      <NavLink to={`/${sessionUser.username}/profile`}>Profile</NavLink>
+      <NavLink to={`/${sessionUser.username}/my-campaigns`}>
+        My Campaigns
+      </NavLink>
+      <NavLink to={`/${sessionUser.username}/contributions`}>
+        Contributions
+      </NavLink>
     </>
   );
 };

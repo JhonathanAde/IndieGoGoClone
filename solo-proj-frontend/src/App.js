@@ -13,7 +13,7 @@ import MyCampaign from "./Pages/MyCampaigns";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-  const user = useSelector((state) => state.session.user);
+  const sessionUser = useSelector((state) => state.session.user);
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -21,24 +21,30 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      {isLoaded && (
+      <Switch>
+        <Route path="/signup">
+          <SignupFormPage />
+        </Route>
+        ,
+        <Route path="/login">
+          <LoginFormPage />
+        </Route>
+        <Route exact path="/">
+          <HomePage />
+        </Route>
+      </Switch>
+      {isLoaded && sessionUser && (
         <Switch>
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
-          <Route path="/login">
-            <LoginFormPage />
-          </Route>
           <Route exact path="/start-a-campaign">
             <StartACampaign />
           </Route>
-          <Route exact path={`/${user.username}/my-campaigns`}>
+          <Route exact path={`/${sessionUser.username}/my-campaigns`}>
             <MyCampaign />
           </Route>
-          <Route exact path={`/${user.username}`}>
+          <Route exact path={`/${sessionUser.username}/profile`}>
             <ProfilePage />
           </Route>
-          <Route exact path="/">
+          <Route exact path={`/${sessionUser.username}`}>
             <HomePage />
           </Route>
         </Switch>

@@ -103,4 +103,14 @@ router.get(
   })
 );
 
+// router.get(
+//   "/",
+//   requireAuth,
+//   asyncHandler(async (req, res) => {
+//     const { user } = req;
+//     const userId = user.id;
+//     const campaigns = await Campaign.findByPk({})
+//   })
+// )
+
 module.exports = router;

@@ -4,12 +4,12 @@ import { NavLink } from "react-router-dom";
 import ProfileNav from "../components/ProfileNav/ProfileNav";
 
 const ProfilePage = () => {
-  const user = useSelector((state) => state.session.user);
+  const sessionUser = useSelector((state) => state.session.user);
 
   return (
     <>
       <h1>
-        {user.firstName} {user.lastName}
+        {sessionUser.firstName} {sessionUser.lastName}
       </h1>
       <div>
         <ProfileNav />

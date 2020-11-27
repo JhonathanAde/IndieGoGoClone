@@ -5,6 +5,7 @@ import { getAllCampaigns } from "../store/campaign";
 
 const HomePage = () => {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.session.user);
   const campaigns = useSelector((state) => state.campaign.campaigns);
 
   useEffect(() => {
@@ -20,6 +21,7 @@ const HomePage = () => {
       {campaigns.map((campaign, index) => {
         return <CampaignList key={index} data={campaign} />;
       })}
+      {!user && <h1>Welcome!</h1>}
     </>
   );
 };

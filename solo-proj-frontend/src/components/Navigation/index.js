@@ -25,7 +25,7 @@ const Navigation = ({ isLoaded }) => {
           </NavLink>
           <NavLink to="/start-a-campaign">Start A Campaign</NavLink>
           {sessionUser && (
-            <NavLink to={`/${sessionUser.username}`}>
+            <NavLink to={`/${sessionUser.username}/profile`}>
               {sessionUser.firstName}
             </NavLink>
           )}
