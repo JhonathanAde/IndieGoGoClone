@@ -1,0 +1,19 @@
+.nav-bar {
+  background-color: blanchedalmond;
+  padding: 5px;
+  display: flex;
+}
+.auth-buttons {
+  border-left: solid 1px grey;
+  margin: 0px 5px;
+  padding: 0px 20px;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.auth-buttons__signup {
+  padding: 0px 30px;
+}

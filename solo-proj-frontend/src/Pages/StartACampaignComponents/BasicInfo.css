@@ -1,0 +1,10 @@
+.campaign-details__basicinfo {
+  display: flex;
+  flex-direction: column;
+  background-color: hotpink;
+}
+
+.campaign-details__basicinfo__form {
+  display: flex;
+  flex-direction: column;
+}
