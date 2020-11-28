@@ -14,12 +14,12 @@ export const addNewCampaign = (title, description, duration) => {
   };
 };
 
-export const loadNewCampaign = (campaigns) => {
-  return {
-    type: LOAD_NEW_CAMPAIGNS,
-    payload: campaigns,
-  };
-};
+// export const loadNewCampaign = (campaigns) => {
+//   return {
+//     type: LOAD_NEW_CAMPAIGNS,
+//     payload: campaigns,
+//   };
+// };
 
 export const loadAllCampaigns = (campaigns) => {
   return {
@@ -33,13 +33,16 @@ export const getAllCampaigns = () => async (dispatch) => {
   console.log(response);
   dispatch(loadAllCampaigns(response.data.campaigns));
 };
-export const postNewCampaign = (title, description, duration) => async (
-  dispatch
-) => {
+export const postNewCampaign = (
+  title,
+  description,
+  cardImage,
+  duration
+) => async (dispatch) => {
   // Update fetch to go to 'POST'
   const response = await fetch("/api/campaigns", {
     method: "POST",
-    body: JSON.stringify({ title, description, duration }),
+    body: JSON.stringify({ title, description, cardImage, duration }),
   });
   dispatch(addNewCampaign(response.data.campaign));
 };
@@ -52,10 +55,10 @@ export const campaignReducer = (state = initialState, action) => {
       newState = Object.assign({}, state);
       newState.campaigns = [...state.campaigns, action.payload];
       return newState;
-    case LOAD_NEW_CAMPAIGNS:
-      newState = Object.assign({}, state);
-      newState.campaigns = action.payload;
-      return newState;
+    // case LOAD_NEW_CAMPAIGNS:
+    //   newState = Object.assign({}, state);
+    //   newState.campaigns = action.payload;
+    //   return newState;
     case LOAD_ALL_CAMPAIGNS:
       newState = Object.assign({}, state);
       newState.campaigns = action.payload;

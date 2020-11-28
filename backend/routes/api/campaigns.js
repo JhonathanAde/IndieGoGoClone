@@ -40,7 +40,7 @@ router.post(
   campaignValidators,
   asyncHandler(async (req, res) => {
     console.log("I am in this post");
-    const { title, description, duration } = req.body;
+    const { title, description, cardImage, duration } = req.body;
     const { user } = req;
     const userId = user.id;
 
@@ -48,45 +48,15 @@ router.post(
     const campaign = Campaign.create({
       title,
       description,
+      cardImage,
       duration,
       userId,
     });
     res.json({ campaign });
-    // console.log(req.body);
-    // const validatorErrors = validationResult(req);
-    // try {
-    //   if (validatorErrors.isEmpty()) {
-    //     await campaign.save();
-    //     res.redirect("/");
-    //   } else {
-    //     const errors = validatorErrors.array().map((error) => error.msg);
-    //     res.send("start-a-campaign", {
-    //       title: title,
-    //       description,
-    //       duration,
-    //       errors,
-    //     });
-    //   }
-    // } catch (err) {
-    //   if (
-    //     err.name === "SequelizeValidationError" ||
-    //     err.name === "SequelizeUniqueConstraintError"
-    //   ) {
-    //     const errors = err.errors.map((error) => error.message);
-    //     res.send("start-a-campaign", {
-    //       title: title,
-    //       description,
-    //       duration,
-    //       errors,
-    //     });
-    //   } else {
-    //     next(err);
-    //   }
-    // }
   })
 );
 
-//Get Campaigns
+//Get Campaigns For My Campaigns
 /* *********************************************************************/
 router.get(
   "/",
@@ -103,12 +73,12 @@ router.get(
   })
 );
 
+//Get Campaigns for specific Campaign Page
+/* *******************************************************************/
 // router.get(
 //   "/",
 //   requireAuth,
 //   asyncHandler(async (req, res) => {
-//     const { user } = req;
-//     const userId = user.id;
 //     const campaigns = await Campaign.findByPk({})
 //   })
 // )

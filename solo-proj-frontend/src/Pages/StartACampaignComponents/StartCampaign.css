@@ -1,0 +1,10 @@
+.campaign-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.campaign-page-header {
+  background-color: lightgray;
+  height: 150px;
+}

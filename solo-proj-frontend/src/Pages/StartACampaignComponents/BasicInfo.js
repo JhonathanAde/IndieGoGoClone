@@ -7,17 +7,18 @@ import { addNewCampaign, postNewCampaign } from "../../store/campaign.js";
 const BasicInfo = () => {
   const dispatch = useDispatch();
   const [campaignTitle, setCampaignTitle] = useState("");
+  const [cardImage, setCardImage] = useState("");
   const [description, setDescription] = useState("");
   const [duration, setDuration] = useState(0);
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(postNewCampaign(campaignTitle, description, duration)).catch(
-      (res) => {
-        if (res.data && res.data.errors) setErrors(res.data.errors);
-      }
-    );
+    dispatch(
+      postNewCampaign(campaignTitle, description, cardImage, duration)
+    ).catch((res) => {
+      if (res.data && res.data.errors) setErrors(res.data.errors);
+    });
     console.log(campaignTitle);
     console.log(description);
   };
@@ -28,9 +29,6 @@ const BasicInfo = () => {
       {errors.map((error) => (
         <p>{error}</p>
       ))}
-      <p>
-        {campaignTitle} {description} {duration}
-      </p>
       <p>Here is where you will make a good impression of your campaign</p>
       <form
         className="campaign-details__basicinfo__form"
@@ -51,6 +49,14 @@ const BasicInfo = () => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
+        </label>
+        <label>
+          Card Image
+          <input
+            type="text"
+            value={cardImage}
+            onChange={(e) => setCardImage(e.target.value)}
+          ></input>
         </label>
         <label>
           Campaign Duration

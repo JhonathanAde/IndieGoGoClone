@@ -1,0 +1,17 @@
+.contents {
+  background-color: darkgray;
+  padding: 10px;
+  margin: 10px;
+}
+
+.contents-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 5px;
+  margin: 5px;
+}
+
+label {
+  padding: 5px;
+}
