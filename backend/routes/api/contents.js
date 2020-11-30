@@ -18,9 +18,13 @@ const contentValidators = [
   check("content")
     .exists({ checkFalsy: true })
     .withMessage("Content box must have an image url"),
+  check("campaignId")
+    .exists({ checkFalsy: true })
+    .withMessage("Please submit Basic Info form first"),
   check("story")
     .exists({ checkFalsy: true })
     .withMessage("Please include a story for your campaign"),
+  handleValidationErrors,
 ];
 
 //Create Contents

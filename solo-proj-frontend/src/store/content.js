@@ -2,10 +2,10 @@ import { fetch } from "./csrf";
 
 const ADD_NEW_CONTENT = "content/addNewContent";
 
-export const addContent = (content) => {
+export const addContent = (content, campaignId, overlay, story) => {
   return {
     type: ADD_NEW_CONTENT,
-    payload: content,
+    payload: { content, campaignId, overlay, story },
   };
 };
 

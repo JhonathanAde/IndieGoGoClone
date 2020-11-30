@@ -1,3 +1,6 @@
+// Imports
+/* ***********************************************************/
+
 import { useState, useEffect } from "react";
 import React from "react";
 import "./Contents.css";
@@ -7,40 +10,45 @@ import { getAllCampaigns } from "../../store/campaign.js";
 
 const Contents = () => {
   const dispatch = useDispatch();
+
+  // Hooks
+  /* ********************************************************/
+
   const [content, setContent] = useState("");
   const [overlay, setOverlay] = useState("");
   const [story, setStory] = useState("");
   const [errors, setErrors] = useState([]);
-  // const [campaignId, setCampaignId] = useState("");
+
+  // Selectors
+  /* *******************************************************/
+
   const campaigns = useSelector((state) => state.campaign.campaigns);
-  // const latestCampaign = campaigns[campaigns.length - 1];
-  // const { id } = latestCampaign;
-  // console.log(id);
-  // dispatch(getAllCampaigns());
-  // useEffect(() => {
-  //   (async () => {
-  //     const getCampaigns = await fetch("/api/campaigns");
-  //     const campaignData = await getCampaigns.json();
-  //     console.log(campaignData);
-  //   });
-  // });
+
+  // Methods
+  /* *******************************************************/
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const latestCampaign = campaigns[campaigns.length - 1];
-    const { id } = latestCampaign;
-    console.log(id);
-    // setCampaignId(id);
-    dispatch(addNewContent(content, id, overlay, story)).catch((res) => {
-      if (res.data && res.data.errors) setErrors(res.data.errors);
-    });
+    if (campaigns.length) {
+      const latestCampaign = campaigns[campaigns.length - 1];
+      const { id } = latestCampaign;
+      console.log(id);
+      dispatch(addNewContent(content, id, overlay, story)).catch((res) => {
+        if (res.data && res.data.errors) setErrors(res.data.errors);
+      });
+    } else {
+      return setErrors(["Please submit Basic Info form first"]);
+    }
   };
+
+  // Renderer
+  /* *************************************************************/
 
   return (
     <div className="contents">
       <h1>Content</h1>
-      {errors.map((error) => (
-        <p>{error}</p>
+      {errors.map((error, index) => (
+        <p key={index}>{error}</p>
       ))}
       <h3>This is where you input the content you want to show</h3>
       <p>
@@ -73,7 +81,6 @@ const Contents = () => {
             onChange={(e) => setStory(e.target.value)}
           />
         </label>
-        {/* <input type="hidden" value={campaignId}></input> */}
         <button type="submit">Submit</button>
       </form>
     </div>
@@ -81,3 +88,21 @@ const Contents = () => {
 };
 
 export default Contents;
+
+//Scrap
+/* ****************************************************************/
+
+// const [campaignId, setCampaignId] = useState("");
+// const latestCampaign = campaigns[campaigns.length - 1];
+// const { id } = latestCampaign;
+// console.log(id);
+// dispatch(getAllCampaigns());
+// useEffect(() => {
+//   (async () => {
+//     const getCampaigns = await fetch("/api/campaigns");
+//     const campaignData = await getCampaigns.json();
+//     console.log(campaignData);
+//   });
+// });
+/* <input type="hidden" value={campaignId}></input> */
+// setCampaignId(id);
