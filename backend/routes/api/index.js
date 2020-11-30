@@ -3,6 +3,7 @@ const sessionRouter = require("./session.js");
 const usersRouter = require("./users.js");
 const campaignsRouter = require("./campaigns.js");
 const contentsRouter = require("./contents.js");
+const perksRouter = require("./perks.js");
 
 // // GET /api/set-token-cookie
 // const asyncHandler = require('express-async-handler');
@@ -49,5 +50,7 @@ router.use("/users", usersRouter);
 router.use("/campaigns", campaignsRouter);
 
 router.use("/contents", contentsRouter);
+
+router.use("/perks", perksRouter);
 
 module.exports = router;

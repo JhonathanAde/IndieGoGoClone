@@ -6,9 +6,11 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./Perks.css";
 import { createNewPerk } from "../../store/perks.js";
+import { Redirect } from "react-router-dom";
 
 const Perks = () => {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.session.user);
 
   // Hooks
   /* ********************************************************/
@@ -18,9 +20,9 @@ const Perks = () => {
   const [errors, setErrors] = useState([]);
   const [perkImage, setPerkImage] = useState("");
   const [price, setPrice] = useState("");
-  const [quantity, setQuantity] = useState("");
+  const [quantityAvailable, setQuantity] = useState("");
   const [title, setTitle] = useState("");
-  const [visible, setVisibility] = useState(false);
+  const [visibility, setVisibility] = useState(false);
 
   // Selectors
   /* *******************************************************/
@@ -31,20 +33,20 @@ const Perks = () => {
   /* *******************************************************/
 
   const visibilityOn = () => {
-    if (visible === true) {
-      setVisibility(false);
-    } else {
-      return;
-    }
-    console.log(visible);
-  };
-  const visibilityOff = () => {
-    if (visible === false) {
+    if (visibility === false) {
       setVisibility(true);
     } else {
       return;
     }
-    console.log(visible);
+    console.log(visibility);
+  };
+  const visibilityOff = () => {
+    if (visibility === true) {
+      setVisibility(false);
+    } else {
+      return;
+    }
+    console.log(visibility);
   };
 
   const handleSubmit = (e) => {
@@ -55,17 +57,18 @@ const Perks = () => {
       console.log(id);
       dispatch(
         createNewPerk(
-          visible,
+          visibility,
           title,
           description,
           perkImage,
           price,
-          quantity,
+          quantityAvailable,
           id
         )
       ).catch((res) => {
         if (res.data && res.data.errors) setErrors(res.data.errors);
       });
+      return <Redirect to={`/${user.username}/my-campaigns`} />;
     } else {
       return setErrors(["Please submit Basic Info form first"]);
     }
@@ -127,7 +130,7 @@ const Perks = () => {
           Quantity
           <input
             type="text"
-            value={quantity}
+            value={quantityAvailable}
             onChange={(e) => setQuantity(e.target.value)}
           />
         </label>

@@ -19,18 +19,23 @@ const BasicInfo = () => {
     ).catch((res) => {
       if (res.data && res.data.errors) setErrors(res.data.errors);
     });
-    let count = 0;
-    function intervalCount(count, delay) {
-      const intervalObj = setInterval(() => {
-        dispatch(getAllCampaigns());
-        count++;
-        if (count === 1) {
-          clearInterval(intervalObj);
-        }
-      }, delay);
-    }
+    if (!errors.length) {
+      let count = 0;
+      function intervalCount(count, delay) {
+        const intervalObj = setInterval(() => {
+          dispatch(getAllCampaigns());
+          count++;
+          console.log("timer was activated");
+          if (count === 1) {
+            clearInterval(intervalObj);
+          }
+        }, delay);
+      }
 
-    intervalCount(count, 500);
+      intervalCount(count, 500);
+    } else {
+      return errors;
+    }
 
     console.log(description);
   };
@@ -40,8 +45,8 @@ const BasicInfo = () => {
   return (
     <div className="campaign-details__basicinfo">
       <h1>Basics</h1>
-      {errors.map((error) => (
-        <p>{error}</p>
+      {errors.map((error, index) => (
+        <p key={index}>{error}</p>
       ))}
       <p>Here is where you will make a good impression of your campaign</p>
       <form
@@ -87,7 +92,6 @@ const BasicInfo = () => {
     </div>
   );
 };
-
 
 // function intervalCount(count, delay) {
 //   const intervalObj = setInterval(() => {

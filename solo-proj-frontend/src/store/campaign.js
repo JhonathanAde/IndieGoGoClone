@@ -6,6 +6,14 @@ import { fetch } from "./csrf";
 const ADD_NEW_CAMPAIGN = "campaign/addNewCampaign";
 const LOAD_NEW_CAMPAIGNS = "campaign/loadNewCampaigns";
 const LOAD_ALL_CAMPAIGNS = "campaign/loadAllCampaigns";
+const CLEAR_ALL_CAMPAIGNS = "campaign/clearAllCampaigns";
+
+export const clearAllCampaigns = () => {
+  return {
+    type: CLEAR_ALL_CAMPAIGNS,
+    payload: [],
+  };
+};
 
 export const addNewCampaign = (title, description, cardImage, duration) => {
   return {
@@ -60,6 +68,10 @@ export const campaignReducer = (state = initialState, action) => {
       newState.campaigns = action.payload;
       return newState;
     case LOAD_ALL_CAMPAIGNS:
+      newState = Object.assign({}, state);
+      newState.campaigns = action.payload;
+      return newState;
+    case CLEAR_ALL_CAMPAIGNS:
       newState = Object.assign({}, state);
       newState.campaigns = action.payload;
       return newState;

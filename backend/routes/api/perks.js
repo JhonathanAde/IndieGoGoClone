@@ -54,7 +54,7 @@ router.post(
       description,
       perkImage,
       price,
-      quantity,
+      quantityAvailable,
       campaignId,
     } = req.body;
 
@@ -64,11 +64,11 @@ router.post(
       description,
       perkImage,
       price,
-      quantity,
+      quantityAvailable,
       campaignId,
     });
 
-    res.json({ contents });
+    res.json({ perks });
   })
 );
 

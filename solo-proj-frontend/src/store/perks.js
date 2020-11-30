@@ -12,7 +12,7 @@ export const addPerk = (
   description,
   perkImage,
   price,
-  quantity,
+  quantityAvailable,
   campaignId
 ) => {
   return {
@@ -23,7 +23,7 @@ export const addPerk = (
       description,
       perkImage,
       price,
-      quantity,
+      quantityAvailable,
       campaignId,
     },
   };
@@ -45,7 +45,7 @@ export const createNewPerk = (
   description,
   perkImage,
   price,
-  quantity,
+  quantityAvailable,
   campaignId
 ) => async (dispatch) => {
   const response = await fetch("/api/perks", {
@@ -56,7 +56,7 @@ export const createNewPerk = (
       description,
       perkImage,
       price,
-      quantity,
+      quantityAvailable,
       campaignId,
     }),
   });
