@@ -16,23 +16,15 @@ const Navigation = ({ isLoaded }) => {
   }
 
   return (
-    <ul>
-      <li>
-        <div className="nav-bar">
-          {isLoaded && sessionLinks}
-          <NavLink exact to="/">
-            Home
-          </NavLink>
-          <NavLink to="/start-a-campaign">Start A Campaign</NavLink>
-          {sessionUser && (
-            <NavLink to={`/${sessionUser.username}/profile`}>
-              {sessionUser.firstName}
-            </NavLink>
-          )}
-          {!sessionUser && <AuthButtons />}
-        </div>
-      </li>
-    </ul>
+    <div className="nav-bar">
+      {isLoaded}
+      <NavLink exact to="/">
+        Home
+      </NavLink>
+      <NavLink to="/start-a-campaign">Start A Campaign</NavLink>
+      {sessionLinks}
+      {!sessionUser && <AuthButtons />}
+    </div>
   );
 };
 

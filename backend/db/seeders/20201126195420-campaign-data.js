@@ -15,7 +15,6 @@ module.exports = {
       "Campaigns",
       [
         {
-          id: 1,
           title: "Sumuhdat Cheese",
           description: "This is some good ass cheese made from yours truly",
           cardImage:

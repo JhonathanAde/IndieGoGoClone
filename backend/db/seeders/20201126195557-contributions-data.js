@@ -13,7 +13,6 @@ module.exports = {
      */
     await queryInterface.bulkInsert("Contributions", [
       {
-        id: 1,
         campaignId: 1,
         amount: 5.0,
         perkId: 1,

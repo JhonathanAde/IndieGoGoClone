@@ -15,7 +15,6 @@ module.exports = {
       "FAQs",
       [
         {
-          id: 1,
           contentId: 1,
           questions: "what exactly does it do?",
           answers: "Take a wild guess...",

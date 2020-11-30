@@ -7,19 +7,19 @@ const ADD_NEW_CAMPAIGN = "campaign/addNewCampaign";
 const LOAD_NEW_CAMPAIGNS = "campaign/loadNewCampaigns";
 const LOAD_ALL_CAMPAIGNS = "campaign/loadAllCampaigns";
 
-export const addNewCampaign = (title, description, duration) => {
+export const addNewCampaign = (title, description, cardImage, duration) => {
   return {
     type: ADD_NEW_CAMPAIGN,
-    payload: { title, description, duration },
+    payload: { title, description, cardImage, duration },
   };
 };
 
-// export const loadNewCampaign = (campaigns) => {
-//   return {
-//     type: LOAD_NEW_CAMPAIGNS,
-//     payload: campaigns,
-//   };
-// };
+export const loadNewCampaign = (campaigns) => {
+  return {
+    type: LOAD_NEW_CAMPAIGNS,
+    payload: campaigns,
+  };
+};
 
 export const loadAllCampaigns = (campaigns) => {
   return {
@@ -55,10 +55,10 @@ export const campaignReducer = (state = initialState, action) => {
       newState = Object.assign({}, state);
       newState.campaigns = [...state.campaigns, action.payload];
       return newState;
-    // case LOAD_NEW_CAMPAIGNS:
-    //   newState = Object.assign({}, state);
-    //   newState.campaigns = action.payload;
-    //   return newState;
+    case LOAD_NEW_CAMPAIGNS:
+      newState = Object.assign({}, state);
+      newState.campaigns = action.payload;
+      return newState;
     case LOAD_ALL_CAMPAIGNS:
       newState = Object.assign({}, state);
       newState.campaigns = action.payload;

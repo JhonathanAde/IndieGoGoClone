@@ -13,7 +13,6 @@ module.exports = {
      */
     await queryInterface.bulkInsert("Items", [
       {
-        id: 1,
         perkId: 1,
         itemName: "Wine 1",
         createdAt: new Date(),

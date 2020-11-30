@@ -13,7 +13,6 @@ module.exports = {
      */
     await queryInterface.bulkInsert("Comments", [
       {
-        id: 1,
         comment: "Wow was this from a skit on the Chappelle Show?",
         contributionId: 1,
         createdAt: new Date(),

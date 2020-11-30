@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import React from "react";
 import "./BasicInfo.css";
 import { useDispatch } from "react-redux";
-import { addNewCampaign, postNewCampaign } from "../../store/campaign.js";
+import { getAllCampaigns, postNewCampaign } from "../../store/campaign.js";
 
 const BasicInfo = () => {
   const dispatch = useDispatch();
@@ -19,9 +19,23 @@ const BasicInfo = () => {
     ).catch((res) => {
       if (res.data && res.data.errors) setErrors(res.data.errors);
     });
-    console.log(campaignTitle);
+    let count = 0;
+    function intervalCount(count, delay) {
+      const intervalObj = setInterval(() => {
+        dispatch(getAllCampaigns());
+        count++;
+        if (count === 1) {
+          clearInterval(intervalObj);
+        }
+      }, delay);
+    }
+
+    intervalCount(count, 500);
+
     console.log(description);
   };
+
+  // dispatch(getAllCampaigns());
 
   return (
     <div className="campaign-details__basicinfo">
@@ -73,5 +87,16 @@ const BasicInfo = () => {
     </div>
   );
 };
+
+
+// function intervalCount(count, delay) {
+//   const intervalObj = setInterval(() => {
+//     dispatch(getAllCampaigns());
+//     count ++
+//     if (count === 1) {
+//       clearInterval(intervalObj);
+//     }
+//   }, delay);
+// }
 
 export default BasicInfo;

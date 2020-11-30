@@ -15,7 +15,6 @@ module.exports = {
       "Perks",
       [
         {
-          id: 1,
           visibility: true,
           title: "Sumuhdat Wine",
           description: "How can you not have this with some good ass cheese?",

@@ -1,0 +1,22 @@
+.campaign-card {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  background-color: grey;
+  box-shadow: 0px;
+  width: 320px;
+  height: 400px;
+  margin: 10px;
+}
+
+.campaign-card__image-box {
+  display: flex;
+  align-items: center;
+  width: 320;
+  margin: 10px;
+}
+
+.campaign-card__details {
+  padding: 10px;
+  margin: 0px;
+}

@@ -1,0 +1,29 @@
+.user-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: lightsalmon;
+}
+
+.profile-dropdown {
+  display: flex;
+  align-content: center;
+  margin-top: 0px;
+  background-color: lightsalmon;
+  align-items: center;
+}
+ul {
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+  padding: 10px;
+  margin: 2px;
+  border-bottom: solid 1px black;
+}
+
+.user-menu-button {
+  border: none;
+  background-color: lightsalmon;
+}
